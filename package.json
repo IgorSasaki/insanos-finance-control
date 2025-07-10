@@ -6,22 +6,62 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky",
+    "commit": "git-cz"
   },
   "dependencies": {
+    "next": "15.3.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.5"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/eslintrc": "^3",
+    "@next/eslint-plugin-next": "^15.3.5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "@typescript-eslint/parser": "^8.36.0",
+    "commitizen": "^4.3.1",
+    "commitlint": "^19.8.1",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
-    "@eslint/eslintrc": "^3"
+    "eslint-plugin-import-helpers": "^2.0.1",
+    "eslint-plugin-perfectionist": "^4.15.0",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-svg-jsx": "^1.2.4",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "typescript-eslint": "^8.36.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --config ./prettier.config.js --write"
+    ],
+    "**/*.{css,scss,md,html,json}": [
+      "prettier --config ./prettier.config.js --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
