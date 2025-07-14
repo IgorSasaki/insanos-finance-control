@@ -1,4 +1,4 @@
-import { BarChart3, Home, List, PlusCircle, Settings } from 'lucide-react'
+import { BarChart3, Home, List, PlusCircle } from 'lucide-react'
 
 export const SIDEBAR_ITEMS = [
   {
@@ -20,11 +20,11 @@ export const SIDEBAR_ITEMS = [
     icon: BarChart3,
     label: 'Relatórios',
     href: '/relatorios'
-  },
-
-  {
-    icon: Settings,
-    label: 'Configurações',
-    href: '/configuracoes'
   }
+
+  // {
+  //   icon: Settings,
+  //   label: 'Configurações',
+  //   href: '/configuracoes'
+  // }
 ]
